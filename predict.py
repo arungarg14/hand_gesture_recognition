@@ -42,7 +42,7 @@ while True:
     cv2.imshow("test", test_image)
     # Batch of 1
     result = loaded_model.predict(test_image.reshape(1, 64, 64, 1))
-    print(result)
+    # print(result)
     prediction = {'CLENCHED_FIST': result[0][0],
                   'I LOVE YOU': result[0][1],
                   'OKAY': result[0][2],
