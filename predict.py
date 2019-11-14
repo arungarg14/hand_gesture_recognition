@@ -5,12 +5,12 @@ import cv2
 import sys, os
 
 # Loading the model
-json_file = open("model_2.json", "r")
+json_file = open("json_files/model_2.json", "r")
 model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(model_json)
 # load weights into new model
-loaded_model.load_weights("model_2.h5")
+loaded_model.load_weights("json_files/model_2.h5")
 print("Loaded model from disk")
 
 cap = cv2.VideoCapture(0)

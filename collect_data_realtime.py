@@ -5,20 +5,19 @@ import os
 # Create the directory structure
 if not os.path.exists("data"):
     os.makedirs("data")
-if not os.path.exists("data/train"):
     os.makedirs("data/train")
     os.makedirs("data/train/okay")
     os.makedirs("data/train/peace")
     os.makedirs("data/train/Clenched_fist")
     os.makedirs("data/train/ILY")
     os.makedirs("data/train/Thumb_up")
-if not os.path.exists("data/test"):
     os.makedirs("data/test")
     os.makedirs("data/test/okay")
     os.makedirs("data/test/peace")
     os.makedirs("data/test/Clenched_fist")
     os.makedirs("data/test/ILY")
     os.makedirs("data/test/Thumb_up")
+
 
 
 # Train or test
