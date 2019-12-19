@@ -26,7 +26,7 @@ classifier.add(Flatten())
 
 # Adding a fully connected layer
 classifier.add(Dense(units=128, activation='relu'))
-classifier.add(Dense(units=5, activation='softmax')) # softmax for more than 2
+classifier.add(Dense(units=6, activation='softmax')) # softmax for more than 2
 
 # Compiling the CNN
 classifier.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
@@ -48,22 +48,22 @@ test_datagen = ImageDataGenerator(rescale=1./255)
 #Takes the path to a directory, and generates batches of augmented/normalized data
 training_set = train_datagen.flow_from_directory('data/train',
                                                  target_size=(64, 64),
-                                                 batch_size=5,
+                                                 batch_size=6,
                                                  color_mode='grayscale',
                                                  class_mode='categorical',shuffle = True)
 
 
 test_set = test_datagen.flow_from_directory('data/test',
                                             target_size=(64, 64),
-                                            batch_size=5,
+                                            batch_size=6,
                                             color_mode='grayscale',
                                             class_mode='categorical',shuffle = True)
 classifier.fit_generator(
         training_set,
-        steps_per_epoch=484, # No of images in training set
+        steps_per_epoch=580, # No of images in training set
         epochs=40,
         validation_data=test_set,
-        validation_steps=25)# No of images in test set
+        validation_steps=30)# No of images in test set
 
 
 # Saving the model
