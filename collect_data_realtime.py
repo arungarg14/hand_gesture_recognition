@@ -11,12 +11,14 @@ if not os.path.exists("data"):
     os.makedirs("data/train/Clenched_fist")
     os.makedirs("data/train/ILY")
     os.makedirs("data/train/Thumb_up")
+    os.makedirs("data/train/unknown")
     os.makedirs("data/test")
     os.makedirs("data/test/okay")
     os.makedirs("data/test/peace")
     os.makedirs("data/test/Clenched_fist")
     os.makedirs("data/test/ILY")
     os.makedirs("data/test/Thumb_up")
+    os.makedirs("data/test/unknown")
 
 
 
@@ -31,7 +33,7 @@ print("Press 2 to save PEACE")
 print("Press 3 to save CLENCHED_FIST")
 print("Press 4 to save ILY")
 print("Press 5 to save for THUMB_UP")
-
+print("Press 6 to save for unknown")
 while True:
     _, frame = cap.read()
     # Simulating mirror image
@@ -43,6 +45,7 @@ while True:
              'Clenched_fist': len(os.listdir(directory+"/Clenched_fist")),
              'ILY': len(os.listdir(directory+"/ILY")),
              'Thumb_up': len(os.listdir(directory+"/Thumb_up")),
+             'unknown': len(os.listdir(directory+"/unknown")),
              }
 
     # Printing the count in each set to the screen
@@ -53,6 +56,7 @@ while True:
     cv2.putText(frame, "Clenched Fist : "+str(count['Clenched_fist']), (int(0.5*frame.shape[1])+20, 160), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 1)
     cv2.putText(frame, "ILY : "+str(count['ILY']), (int(0.5*frame.shape[1])+20, 180), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 1)
     cv2.putText(frame, "Thumb Up : "+str(count['Thumb_up']), (int(0.5*frame.shape[1])+20, 200), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 1)
+    cv2.putText(frame, "unknown : "+str(count['unknown']), (int(0.5*frame.shape[1])+20, 230), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 1)
 
     # Coordinates of the ROI (Region Of Interest)
     x1 = int(10)
@@ -85,6 +89,9 @@ while True:
         cv2.imwrite(directory+'ILY/'+str(count['ILY'])+'.jpg', roi)
     if interrupt & 0xFF == ord('5'):
         cv2.imwrite(directory+'Thumb_up/'+str(count['Thumb_up'])+'.jpg', roi)
+
+    if interrupt & 0xFF == ord('6'):
+        cv2.imwrite(directory+'unknown/'+str(count['unknown'])+'.jpg', roi)
 
 cap.release()
 cv2.destroyAllWindows()
