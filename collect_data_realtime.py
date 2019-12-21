@@ -55,10 +55,10 @@ while True:
     cv2.putText(frame, "Thumb Up : "+str(count['Thumb_up']), (int(0.5*frame.shape[1])+20, 200), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,0), 1)
 
     # Coordinates of the ROI (Region Of Interest)
-    x1 = int(10)
-    y1 = 10
-    x2 = int(0.5*frame.shape[1])
-    y2 = int(0.5*frame.shape[1])
+    x1 = int(0.6*frame.shape[1])
+    x2 = int(0.9*frame.shape[1])
+    y1 = int(0.1*frame.shape[0])
+    y2 = int(0.4*frame.shape[0])
     # Drawing the ROI
     # The increment/decrement by 1 is to compensate for the bounding box
     cv2.rectangle(frame, (x1-1, y1-1), (x2+1, y2+1), (255,0,0) ,1)
