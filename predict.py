@@ -16,7 +16,7 @@ print("Loaded model from disk")
 cap = cv2.VideoCapture(0)
 
 # Category dictionary
-categories = {1: 'OKAY', 2: 'PEACE', 3: 'CLENCHED FIST', 4: 'I LOVE YOU', 5: 'THUMB UP'}
+categories = {1: 'OKAY', 2: 'PEACE', 3: 'CLENCHED FIST', 4: 'I LOVE YOU', 5: 'THUMB UP' ,6:'unknown',}
 
 while True:
     _, frame = cap.read()
@@ -25,7 +25,7 @@ while True:
 
     # Got this from collect-data.py
     # Coordinates of the ROI
-    x1 = 10
+    x1 = int(10)
     y1 = 10
     x2 = int(0.5*frame.shape[1])
     y2 = int(0.5*frame.shape[1])
@@ -48,20 +48,22 @@ while True:
                   'OKAY': result[0][2],
                   'PEACE': result[0][3],
                   'THUMB UP': result[0][4],
+                  'unknown' :result[0][5] ,
                   }
     # Sorting based on top prediction
     prediction = sorted(prediction.items(), key=operator.itemgetter(1), reverse=True)
 
-    #Displaying the predictions
-    if result.any():
-        cv2.putText(frame, 'Unknown', (x1, y2+30), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,0), 1)
-        cv2.imshow("Frame", frame)
-    else:
-        cv2.putText(frame, prediction[0][0], (x1, y2+30), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,0), 1)
-        cv2.imshow("Frame", frame)
+    # Displaying the predictions
+    # if result==0:
+    #     cv2.putText(frame, 'ERROR', (x1, y2+30), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,0), 1)
+    #     cv2.imshow("Frame", frame)
+    # else:
+    cv2.putText(frame, prediction[0][0], (x1, y2+30), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,0), 1)
+    cv2.imshow("Frame", frame)
 
 
-    if cv2.waitKey(1) & 0xFF == 27: # esc key
+    interrupt = cv2.waitKey(10)
+    if interrupt & 0xFF == 27: # esc key
         break
 
 
