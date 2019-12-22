@@ -3,20 +3,11 @@ import numpy as np
 import os
 
 # Create the directory structure
-if not os.path.exists("data"):
-    os.makedirs("data")
-    os.makedirs("data/train")
-    os.makedirs("data/train/okay")
-    os.makedirs("data/train/peace")
-    os.makedirs("data/train/Clenched_fist")
-    os.makedirs("data/train/ILY")
-    os.makedirs("data/train/Thumb_up")
-    os.makedirs("data/test")
-    os.makedirs("data/test/okay")
-    os.makedirs("data/test/peace")
-    os.makedirs("data/test/Clenched_fist")
-    os.makedirs("data/test/ILY")
-    os.makedirs("data/test/Thumb_up")
+paths=["data","data/train","data/test","data/train/okay","data/train/peace","data/train/Clenched_fist","data/train/ILY","data/train/Thumb_up","data/test/okay","data/test/peace","data/test/Clenched_fist","data/test/ILY","data/test/Thumb_up"]
+
+for p in paths:
+    if not os.path.exists(p):
+        os.makedirs(p)
 
 
 
