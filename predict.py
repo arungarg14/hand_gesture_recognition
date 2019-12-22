@@ -25,6 +25,13 @@ while True:
 
     # Got this from collect-data.py
     # Coordinates of the ROI
+
+    # x1 = int(0.6*frame.shape[1])
+    # x2 = int(0.9*frame.shape[1])
+    # y1 = int(0.1*frame.shape[0])
+    # y2 = int(0.4*frame.shape[0])
+
+
     x1 = 10
     y1 = 10
     x2 = int(0.5*frame.shape[1])
